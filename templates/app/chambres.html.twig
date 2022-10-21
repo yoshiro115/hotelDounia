@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Chambres
+{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+	<h2 class="text-center my-4">Notre gamme de chambres</h2>
+
+	{% for chambre in chambres %}
+		{% if chambre.titre != "spas" %}
+			<a class="text-decoration-none" href="{{path('show_chambre', {id: chambre.id})}}">
+				<div class="d-flex align-items-center justify-content-around">
+					{% if chambre.id is odd %}
+						<div class="flex-grow-1 m-3">
+							<h5 class="text-center text-warning h1">{{chambre.titre}}</h5>
+							<p>{{ chambre.descriptioncourte }}</p>
+							<button class="btn btn-primary rounded">Voir plus</button>
+						</div>
+						<div class="flex-shrink-0 w-50">
+							<img src="{{ chambre.photo }}" class="w-100" style="max-height:60vh; object-fit:cover;" alt="">
+						</div>
+					</div>
+				<hr class="my-5">
+			{% else %}
+				<div class="flex-shrink-0 w-50">
+					<img src="{{ chambre.photo }}" class="w-100" style="max-height:60vh; object-fit:cover;" alt="">
+				</div>
+				<div class="flex-grow-1 me-3 m-3">
+					<h5 class="text-center text-warning h1">{{chambre.titre}}</h5>
+					<p>{{ chambre.descriptioncourte }}</p>
+					<button class="btn btn-primary rounded">Voir plus</button>
+				</div>
+			</div>
+		</a>
+		<hr class="my-5">
+	{% endif %}
+{% endif %}{% endfor %}</div>{% endblock %}

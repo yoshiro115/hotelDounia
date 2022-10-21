@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="container my-4">
+		<h3>
+			PORTRAIT
+		</h3>
+		<p>
+			Un jeune chef au parcours sans faute chez les plus grands
+					
+					Piqué par sa curiosité naturelle et les bons plats familiaux, Baptiste Renouard a les papilles bien affutées et sait très tôt que sa vie sera dévouée à la gastronomie. Il intègre la prestigieuse école Ferrandi et effectue des passages remarqués au sein de tables parisiennes prestigieuses dans lesquelles il se perfectionne, pendant 14 ans :
+					
+					L’Atelier (Joël Robuchon)
+					
+					Lasserre (Jean-Louis Nomicos)
+					
+					Le Meurice (Yannick Alléno)
+					
+					Le Laurent (Alain Pégouret)
+					
+					Frédéric Simonin
+		</p>
+
+        <img style="max-height:30vh; object-fit:cover;" class="rounded" src="https://cdn.pixabay.com/photo/2016/03/27/21/34/restaurant-1284351__480.jpg" alt="">
+        <img style="max-height:30vh; object-fit:cover;" class="rounded" src="https://cdn.pixabay.com/photo/2016/11/29/08/51/city-1868530__480.jpg" alt="">
+        <img style="max-height:30vh; object-fit:cover;" class="rounded" src="https://cdn.pixabay.com/photo/2016/11/30/08/48/bedroom-1872196__480.jpg" alt="">
+        <img style="max-height:30vh; object-fit:cover;" class="rounded" src="https://cdn.pixabay.com/photo/2018/10/04/12/39/haddon-hall-3723518__480.jpg" alt="">
+
+		<p>
+			Notre Chef privilégie les circuits courts et les produits locaux. Il utilise les produits de saison, issus d’une agriculture raisonnée, fournis par des producteurs de proximité ou de Bretagne dont il est originaire. Travaillant au « coup de cœur » et au hasard des rencontres de petits producteurs, ce chef généreux a voulu partager avec ses clients ses adresses secrètes. Dans la boutique de l’Ochre, retrouvez la sélection de produits d’exception du chef et ses conseils pour les apprécier.
+
+		</p>
+
+		<hr  class="border border-warning my-4 border-2 opacity-50">
+		
+		<div class="row justify-content-center">
+		<div class="col-md-8">
+			<h3>Nous contacter</h3>
+			{{ form_start(form) }}
+			<div class="row">
+				<div class="col-6">
+					{{ form_row(form.nom) }}
+				</div>
+				<div class="col-6">
+					{{ form_row(form.prenom) }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+			{{ form_row(form.email) }}
+				</div>
+				<div class="col-6">
+			{{ form_row(form.sujet) }}
+				</div>
+			</div>
+			{{ form_row(form.categorie) }}
+			{{ form_row(form.message) }}
+
+			<button type="submit" class="btn btn-warning">Envoyer</button>
+
+			{{ form_end(form) }}
+		</div>
+		</div>
+
+	</div>
+{% endblock %}

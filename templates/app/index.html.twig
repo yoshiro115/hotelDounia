@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{# {% use "show/sidebar.html.twig"  %} #}
+
+{% block body %}
+	<div id="carouselExampleCaptions" class="carousel slide carousel-fade position-absolute top-0 w-100" style="z-index: 1;" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+
+
+		<div class="carousel-inner">
+			{% for photo in photos %}
+				{% if photo.chambre == null %}
+				<div class="carousel-item{% if photo.ordre == 1 %} active {% endif %}" data-bs-interval="3500">
+					<img src="{{ photo.photo}}" class="d-block w-100" style="height:100vh; object-fit:cover;" alt="Photo_HouseHotel">
+					<div class="carousel-caption d-none d-md-block">
+						<a href="{{path('chambres')}}" class="btn btn-primary">HouseHotel | Découvrez nos chambres</a>
+					</div>
+				</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Précédent</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Suivant</span>
+		</button>
+	</div>
+	<div style="height: 100vh;"></div>
+	<div class="container my-5">
+		<hr>
+		<div class="row justify-content-around my-4">
+			<div class="col-lg-3 text-center my-4">
+				<img src="https://cdn.pixabay.com/photo/2021/12/18/06/13/hotel-6878054__480.jpg" class="rounded img-fluid">
+				<h4 class="text-muted p-2">Chambres</h4>
+				<p class="my-3">Venez découvrir nos chambres pour votre plus grand confort !</p>
+				<a href="{{ path('chambres') }}" class="btn btn-primary my-2">Découvrir les chambres</a>
+			</div>
+			<div class="col-lg-3 text-center my-4">
+				<img src="https://cdn.pixabay.com/photo/2012/12/20/10/13/wine-glass-71380__480.jpg" class="rounded img-fluid" alt="">
+				<h4 class="text-muted p-2">Restaurant</h4>
+				<p class="my-3">Nos plats sont confectionnés à la minute par notre chez cuisinier chaque jour</p>
+				<a href="{{ path('cartes') }}" class="btn btn-primary my-2">Voir la carte</a>
+			</div>
+			<div class="col-lg-3 text-center my-4">
+				<img src="https://cdn.pixabay.com/photo/2015/11/06/11/46/interior-1026464__480.jpg" class="rounded img-fluid" alt="">
+				<h4 class="text-muted p-2">Spa</h4>
+				<p class="my-3">Détendez-vous et offrez vous un massage dont vous vous rappellerez toute votre vie</p>
+				<a href="{{ path('spas') }}" class="btn btn-primary my-2">Les soins</a>
+			</div>
+		</div>
+	</div>
+
+
+
+{% endblock %}

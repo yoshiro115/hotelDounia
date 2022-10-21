@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<div class="row my-4">
+		<div class="col-md-6 text-center">
+			<h3>Informations</h3>
+			<ul class="list-unstyled">
+				<li>1 avenue Montaigne</li>
+				<li>75008 Paris</li>
+				<li>Téléphone : 09.81.20.81.69</li>
+				<li>contact@hotelhouse.fr</li>
+			</ul>
+            <iframe class="rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.6401922469686!2d2.2998897156746234!3d48.865071179288186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fdd0dd39a4d%3A0x508194b82b12f012!2s1%20Av.%20Montaigne%2C%2075008%20Paris!5e0!3m2!1sfr!2sfr!4v1666295912638!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+		<div class="col-md-5">
+			<h3>Nous contacter</h3>
+			{{ form_start(form) }}
+			<div class="row">
+				<div class="col-6">
+					{{ form_row(form.nom) }}
+				</div>
+				<div class="col-6">
+					{{ form_row(form.prenom) }}
+				</div>
+			</div>
+			{{ form_row(form.email) }}
+			{{ form_row(form.sujet) }}
+			{{ form_row(form.categorie) }}
+			{{ form_row(form.message) }}
+
+			<button type="submit" class="btn btn-warning">Envoyer</button>
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}HouseHotel
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🏫</text></svg>">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/lux/bootstrap.min.css">
+		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" integrity="sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> #}
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap-grid.min.css" integrity="sha512-a+PObWRxNVh4HZR9wijCGj84JgJ/QhZ8dET09REfYz2clUBjKYhGbOmdy9KEHilYKgbMSIHNQEsonv/r75mHXw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> #}
+		<link
+		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-lg text-center" style="opacity: 0.5; z-index: 2;">
+			<div class="container-fluid text-center">
+				<a class="navbar-brand text-warning" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;" href="{{path('accueil')}}">HouseHotel</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;">
+							<a class="nav-link active text-warning" href="{{ path('accueil') }}">Accueil
+								<span class="visually-hidden">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;">
+							<a class="nav-link text-warning h1" href="{{ path('chambres') }}">Chambres</a>
+						</li>
+						<li class="nav-item" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;">
+							<a class="nav-link text-warning h1" href="{{ path('cartes') }}">Restaurant</a>
+						</li>
+						<li class="nav-item" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;">
+							<a class="nav-link text-warning h1" href="{{ path('spas') }}">Spa</a>
+						</li>
+						<li class="nav-item" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;">
+							<a class="nav-link text-warning h1" href="{{ path('about') }}">L'Hôtel</a>
+						</li>
+						<li class="nav-item" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;">
+							<a class="nav-link text-warning h1" href="{{ path('actu') }}">Actualités</a>
+						</li>
+						<li class="nav-item" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;">
+							<a class="nav-link text-warning h1" href="{{ path('contact') }}">Contact</a>
+						</li>
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<a class="nav-link text-warning h1" href="{{path('admin')}}">BackOffice</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			{% for label, msgs in app.flashes %}
+				{% for msg in msgs %}
+					<div class="alert alert-{{ label }} text-center">
+						{{ msg }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+
+		{% block body %}{% endblock %}
+
+		{% block footer %}
+			<footer class="bg-primary" style="height: 70vh; width: 100vw;">
+				<div class="container-fluid bg-primary">
+					<div class="row align-items-center">
+						<ul class="col-md-3 list-unstyled my-4">
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('accueil') }}">Accueil</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('chambres') }}">Nos chambres</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('cartes') }}">Restaurant</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('spas') }}">Notre spa</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('avis') }}">Avis</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('about') }}">Qui sommes nous ?</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('actu') }}">Notre actu</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('contact') }}">Nous contacter</a>
+							</li>
+							<li class="m-2">
+								<a class="text-warning text-decoration-none" aria-current="page" href="{{path('app_login')}}">Connexion</a>
+							</li>
+						</ul>
+						<ul class="col-md-3 list-unstyled my-4">
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('mentions_legales') }}">Mentions légales</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('cgv') }}">CGV</a>
+							</li>
+							<li class="m-2">
+								<a class="text-light text-decoration-none" href="{{ path('accueil') }}">Imprimer la page</a>
+							</li>
+							<li class="m-2">
+								<input type="text" name="mail" id="mail" placeholder="@mail">
+								<a class="text-light text-decoration-none" href="{{ path('accueil') }}">
+									<button type="submit" class=" text-light btn btn-sm">S'inscrire à la newsletter</button>
+								</a>
+
+							</li>
+							<li>
+								<a class="text-light text-right" href="{{ path('accueil') }}"><img src="https://mebius.cc/pics/share.svg" style="height: 40px;"></a>
+							</li>
+						</ul>
+						<div class="col-md-4 m-4">
+							<iframe class="rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.6401922469686!2d2.2998897156746234!3d48.865071179288186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fdd0dd39a4d%3A0x508194b82b12f012!2s1%20Av.%20Montaigne%2C%2075008%20Paris!5e0!3m2!1sfr!2sfr!4v1666295912638!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<ul class="list-unstyled col-md-1 my-4">
+							<li>
+								<a href="https://www.facebook.com/search/photos/?q=househotel">
+									<i class="m-4 fa-brands fa-facebook-f text-light" style="font-size:40px;"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://twitter.com/?lang=fr">
+									<i class="m-4 fa-brands fa-twitter text-light" style="font-size:40px;"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/explore/tags/hotelhouse/">
+									<i class="m-4 fa-brands fa-instagram text-light" style="font-size:40px;"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<hr>
+					<p class="m-2 text-center text-muted">Tous droits réservés |
+						<span class="text-light">© 2022 HouseHotel</span>
+					</p>
+				</div>
+			</footer>
+		{% endblock %}
+
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			function imprimer_page() {
+window.print();
+}
+		</script>
+	</body>
+</html>
