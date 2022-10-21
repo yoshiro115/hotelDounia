@@ -26,9 +26,9 @@ class AppController extends AbstractController
     {
         if ($_POST) {
             if (!empty($_POST['mail'])) {
-                $this->addFlash('success', "Inscrit");
+                $this->addFlash('success', "Inscription à la newsletter réussie");
             } else {
-                $this->addFlash('info', "Merci d'entrer votre mail");
+                $this->addFlash('info', "Pour vous inscrire à la newsletter merci d'entrer votre mail");
             }
         }
         $slider = $repo->findAll();

@@ -6,7 +6,7 @@
 			{% block title %}HouseHotel
 			{% endblock %}
 		</title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🏫</text></svg>">
+		<link rel="icon" href="https://www.halfwayhousehotel.com/wp-content/uploads/2020/01/Halfway-house-hotel-Kimberley-Logo.png">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/lux/bootstrap.min.css">
 		{# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" integrity="sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> #}
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -24,11 +24,11 @@
 	</head>
 	<body>
 
-		<nav class="navbar navbar-expand-lg text-center" style="opacity: 0.5; z-index: 2;">
+		<nav class="navbar navbar-expand-lg text-center" style=" z-index: 2;">
 			<div class="container-fluid text-center">
-				<a class="navbar-brand text-warning" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;" href="{{path('accueil')}}">HouseHotel</a>
+				<a class="navbar-brand text-warning" style="text-shadow: #f0ad4e 1px 0px 1px, black 0 0 2px;" href="{{path('accueil')}}"><img src="https://www.halfwayhousehotel.com/wp-content/uploads/2020/01/Halfway-house-hotel-Kimberley-Logo.png" style="height:50px;" alt=""></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
+					<span class="navbar-toggler-icon"><img src="https://www.halfwayhousehotel.com/wp-content/uploads/2020/01/Halfway-house-hotel-Kimberley-Logo.png" alt=""></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarColor01">
 					<ul class="navbar-nav me-auto">
@@ -67,7 +67,7 @@
 		<div class="container">
 			{% for label, msgs in app.flashes %}
 				{% for msg in msgs %}
-					<div class="alert alert-{{ label }} text-center">
+					<div class="alert alert-{{ label }} text-center" style="z-index: 3;">
 						{{ msg }}
 					</div>
 				{% endfor %}
@@ -120,10 +120,12 @@
 								<a class="text-light text-decoration-none" href="{{ path('accueil') }}">Imprimer la page</a>
 							</li>
 							<li class="m-2">
+							<form method="post" action="{{ path('accueil') }}">
 								<input type="text" name="mail" id="mail" placeholder="@mail">
 								<a class="text-light text-decoration-none" href="{{ path('accueil') }}">
 									<button type="submit" class=" text-light btn btn-sm">S'inscrire à la newsletter</button>
 								</a>
+							</form>
 
 							</li>
 							<li>
